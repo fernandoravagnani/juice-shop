@@ -39,11 +39,16 @@ jobs:
           
   printer:
     runs-on: ubuntu-latest
-    needs: [ hello-world ]
-      
     steps:
       - name: Impressora 1
         run: echo Impressora disponível
-      
       - name: Impressora 2
         run: echo Impressora ocupada
+
+  final-job:
+    name: Último job
+    runs-on: ubuntu-latest
+    needs: [ hello-world, printer ]
+    steps:
+      - name: Imprime mensagem final
+        run: echo Step final
